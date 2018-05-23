@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>仿打字效果练习</title>
+  <style>
+    html,body{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      background-color: #d6433b;
+      color: #fff;
+    }
+    .show{
+      padding :20px;
+      font :700 18px/18px 'Microsoft yahei';
+      position: relative;
+      min-width: 320px;
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+    .show:after{
+      content : '';
+      position: relative;
+      top : 6px;
+      display: inline-block;
+      width: 1px;
+      height: 24px;
+      background-color: #111;
+      -webkit-animation: cursorAnimation 0.8s linear infinite;
+    }
+    @keyframes cursorAnimation {
+      0%{
+      }
+      50%{
+        opacity: 0;
+      }
+      100%{
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="show">
+    <span></span>
+  </div>
+</body>
+<script type="text/javascript">
+  var str = ["梅京京","在吗？","我有个秘密想告诉你","其实我喜欢你"];
+  var show = document.querySelector('.show span');
+  var idx = 0;
+  var idxx = 0;
+  var strArr = str[idx].split("");
+  var timer = setInterval(function(){
+    show.innerHTML += strArr[idxx];
+    idxx ++;
+    if(idxx == strArr.length){
+      if(idx == str.length -1){
+        clearInterval(timer);
+      }else{
+        idx ++;
+        idxx = 0;
+        show.innerHTML += "<br/>";
+        strArr = str[idx].split("");
+      }
+    }
+  },150);
+</script>
+</html>
